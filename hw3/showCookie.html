@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+<style>
+.table{
+	margin-top:30px;
+	font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	border-color:#666;
+	text-align:center;
+	
+}
+.buttonCSS{
+
+	border-radius:7px;
+	padding-left:30px;
+	padding-right:30px;
+	font-size:20px;
+	
+}
+</style>
+<script>
+
+window.onload = function(){
+	setCookie()
+}
+function goBack(){
+	window.history.back();
+}
+
+function setCookie() {
+			
+ 	myCookies = {};
+	var kv = document.cookie.split(";");
+	for(var id in kv){
+		var cookie = kv[id].split("=");
+		//myCookies[cookie[0].trim()] = cookie[1];
+		document.getElementById(cookie[0].trim()).innerHTML= cookie[1];
+		
+	}
+	
+
+	//alert(cookie[0] +"=" +cookie[1]+" "+cookie[0] +"=" +cookie[1]);
+	
+	//alert(cookie[0] +"=" +cookie[1]+" "+cookie[0] +"=" +cookie[1]);
+	//alert(cookie[0] +"=" +cookie[1])	
+	/*
+	document.getElementById("fname").value = myCookies["_fname"];
+	document.getElementById("lname").value = myCookies["_lname"]; 
+	document.getElementById("hnum").value=myCookies["_hnum"];
+	document.getElementById("street").value = myCookies["_street"] ;
+	document.getElementById("city").value = myCookies["_city"]; 
+	document.getElementById("province").value = myCookies["_province"]; 
+	document.getElementById("zip").value = myCookies["_zipcode"];
+	document.getElementById("pnum").value = myCookies["_phonenum"]; 
+	document.getElementById("cpnum").value = myCookies["_cellpnum"];
+	document.getElementById("csnum").value = myCookies["_csnum"]; 
+	document.getElementById("zsign").value = myCookies["_zosign"];
+	document.getElementById("zyear").value = myCookies["_zoyear"];
+	document.getElementById("bd").value =myCookies["_birthday"];
+	document.getElementById("bdweek").value = myCookies["_bdofweek"]; 
+    
+	*/
+	
+}
+
+</script>
+</head>
+
+<body>
+<label ><h1 class="table"> Cookie table </h1></label>
+<table width="700" border="1" align="center" class="table" >
+
+  <tr>
+    <td width="250"><p> First Name </p></td>
+    <td ><p id="FName"> </p></td>
+  </tr>
+ 
+  <tr>
+     <td ><p> Last Name </p></td>
+    <td ><p id="LName"> </p></td>
+  </tr>
+ 
+  <tr>
+    <td ><p> House Number </p></td>
+    <td ><p id="HouseNum"> </p></td>
+  </tr>
+
+  <tr>
+    <td ><p> Street </p></td>
+    <td ><p id="Street"> </p></td>
+  </tr>
+
+  <tr>
+    <td ><p> city </p></td>
+    <td ><p id="City"> </p></td>
+  </tr>
+
+  <tr>
+    <td ><p> Province </p></td>
+    <td ><p id="Province"> </p></td>
+  </tr>
+
+  <tr>
+   <td ><p> Zipcode </p></td>
+    <td ><p id="Zipcode"> </p></td>
+  </tr>
+
+  <tr>
+    <td ><p> Phone number </p></td>
+    <td ><p id="PhoneNumber"> </p></td>
+  </tr>
+
+
+  <tr>
+    <td ><p> Cell phone number</p></td>
+    <td ><p id="CellPhone"> </p></td>
+  </tr>
+
+  <tr>
+    <td ><p> Birthday </p></td>
+    <td ><p id="Birthday"> </p></td>
+  </tr>
+
+  <tr>
+    <td ><p> Citizenship number </p></td>
+    <td ><p id="CitizenNumber"> </p></td>
+  </tr>
+
+  <tr>
+    <td ><p> Zodiac Sign</p></td>
+    <td ><p id="ZodiacSign"> </p></td>
+  </tr>
+
+  <tr>
+    <td ><p>Zodiac Year </p></td>
+    <td ><p id="ZodiacYear"> </p></td>
+  </tr>
+
+  <tr>
+    <td ><p>Birth Day Of Week </p></td>
+    <td ><p id="DayOfWeek"> </p></td>
+  </tr>
+  
+</table>
+<form action="" method="post" name="form1" class="table" id="form1">
+  <input name="BackButton" type="button" class="buttonCSS"  id="BackButton" onclick="goBack()" value="Back" />
+</form>
+<br /><br />
+
+
+
+
+</body>
+</html>
