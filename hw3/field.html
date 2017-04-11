@@ -1,0 +1,496 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" media="screen" href="css/style.css">
+
+<link href="css/style.css" rel="stylesheet" type="text/css" />
+
+<title>Register</title>
+<script src="SpryAssets/SpryValidationTextField.css" type="text/javascript"></script>
+<script>
+window.onload = function(){
+	setCookie();		
+	
+}				
+var cookiesList = ["FName","LName","HouseNum","Street","City","Province","Zipcode","PhoneNumber","CellPhone",
+"Birthday","CitizenNumber","ZodiacSign","ZodiacYear","DayOfWeek"];
+
+var stringInput = ["FName","LName","Street","City","Province"];
+var formname = "inputForm";	
+													
+function getValueForm() {
+	
+	
+	/*
+    var fname = document.forms[formname]["FName"].value;
+	var lname = document.forms[formname]["LName"].value;
+	var house = document.forms[formname]["HouseNum"].value;
+	var street = document.forms[formname]["Street"].value;
+	var city = document.forms[formname]["City"].value;
+	var prov = document.forms[formname]["Province"].value;
+	var zip = document.forms[formname]["Zipcode"].value;
+	var phone = document.forms[formname]["PhoneNumber"].value;
+	var cell = document.forms[formname]["CellPhone"].value;
+	var birthday = document.forms[formname]["Birthday"].value;
+	var citizen = document.forms[formname]["CitizenNumber"].value;
+	var sign = document.forms[formname]["ZodiacSign"].value;
+	var year = document.forms[formname]["ZodiacYear"].value;
+	var day = document.forms[formname]["DayOfWeek"].value;
+	var form = {"fname":fname, "lname":lname, "house":house, 
+	"street":street, "city":city, "prov":prov, "zip":zip, "phone":phone, 
+	"cell":cell, "birthday":birthday, "citizen":citizen, "sign":sign, "year":year , "day":day};*/
+	var form = {};
+	/*for(var i in cookiesList){
+		alert(i);
+		form[i] = document.forms[formname][i].value;
+	}*/
+	for (var i = 0; i < cookiesList.length; i++) {
+   	 	//alert(document.forms[formname][cookiesList[i]].value);
+		
+		form[cookiesList[i]] = document.forms[formname][cookiesList[i]].value;
+		
+	}
+	
+	return form;
+
+}
+
+
+function validateForm() {
+	//alert(document.cookie);
+
+	var form = getValueForm();
+	var n = true;
+	var showText = "";
+	//checkString(document.forms["inputForm"]["FName"].value);
+	for(var i in form){	
+		if(form[i] == ""){
+			alert("Please fill in the blank");
+			n = false;
+			break;
+		}
+		
+	}
+	//if( n == true){
+		var re = false;
+		for(var i=0; i < stringInput.length;i++){
+		re = checkString(document.forms[formname][stringInput[i]].value);
+			if(!re){
+				n = false;
+				showText = showText + "\n" + stringInput[i] + " must be character " ;
+			}
+		}
+	//}
+	//if(n == true ){
+		re = false ;
+		re = checkPhone(document.forms[formname]["PhoneNumber"].value);
+		if(!re){
+			n = false;
+			showText = showText + "\nPhone Number must match pattern +xxx-xxx-xxxx" ;
+		}
+		re = false ;
+		re = checkCellPhone(document.forms[formname]["CellPhone"].value);
+		if(!re){
+			n = false;
+			showText = showText + "\nCell Phone Number must match pattern +xxxx-xxx-xxxx" ;
+		}
+		
+		re = checkNumber(document.forms[formname]["Zipcode"].value,5);
+		if(!re){
+			n = false;
+			showText = showText + "\nZipcode must be number or 5 number " ;
+		}
+		re = checkNumber(document.forms[formname]["CitizenNumber"].value,13);
+		if(!re){
+			n = false;
+			showText = showText + "\nCitizenship number must be number or 13 number" ;
+		}
+	//}
+	
+	
+	
+	
+	if(n) {
+		saveCookie();
+		var kv = document.cookie.split(";");
+		alert(kv[0]+" "+kv[1]);
+		window.location.href = "showCookie.html";	
+	}
+	else {
+		if(!showText == ""){
+			alert(showText);
+		}
+		
+	}
+	
+	
+	//window.location.href = "showCookie.html";							
+}
+
+function saveCookie() {
+	var form = getValueForm();
+	for(var i in form){	
+		document.cookie = i + "=" + form[i] +"; path=/";  
+	}
+	
+	
+	/*
+	createCookie("FirstName",form["fname"]);
+	createCookie("LastName",form["lname"]);
+	createCookie("HouseNumber",form["house"]);
+	createCookie("Street",form["street"]);
+	createCookie("City",form["city"]);
+	createCookie("Province",form["prov"]);
+	createCookie("Zipcode",form["zip"]);
+	createCookie("PhoneNumber",form["phone"]);
+	createCookie("CellPhone",form["cell"]);
+	createCookie("Birthday",form["birthday"]);
+	createCookie("Citizen",form["citizen"]);
+	createCookie("ZodiacSign",form["sign"]);
+	createCookie("ZodiacYear",form["year"]);
+	createCookie("Day",form["day"]);*/
+	
+														
+}
+/*
+function createCookie(name,value) {
+	
+    document.cookie = name + "=" + value + "; path=/";
+	
+}*/
+
+
+
+function setCookie() {
+			
+ 	myCookies = {};
+	var kv = document.cookie.split(";");
+	for(var id in kv){
+		var cookie = kv[id].split("=");
+		//myCookies[cookie[0].trim()] = cookie[1];
+		document.getElementById(cookie[0].trim()).value = cookie[1];
+		
+	}
+	
+
+	//alert(cookie[0] +"=" +cookie[1]+" "+cookie[0] +"=" +cookie[1]);
+	
+	//alert(cookie[0] +"=" +cookie[1]+" "+cookie[0] +"=" +cookie[1]);
+	//alert(cookie[0] +"=" +cookie[1])	
+	/*
+	document.getElementById("fname").value = myCookies["_fname"];
+	document.getElementById("lname").value = myCookies["_lname"]; 
+	document.getElementById("hnum").value=myCookies["_hnum"];
+	document.getElementById("street").value = myCookies["_street"] ;
+	document.getElementById("city").value = myCookies["_city"]; 
+	document.getElementById("province").value = myCookies["_province"]; 
+	document.getElementById("zip").value = myCookies["_zipcode"];
+	document.getElementById("pnum").value = myCookies["_phonenum"]; 
+	document.getElementById("cpnum").value = myCookies["_cellpnum"];
+	document.getElementById("csnum").value = myCookies["_csnum"]; 
+	document.getElementById("zsign").value = myCookies["_zosign"];
+	document.getElementById("zyear").value = myCookies["_zoyear"];
+	document.getElementById("bd").value =myCookies["_birthday"];
+	document.getElementById("bdweek").value = myCookies["_bdofweek"]; 
+    
+	*/
+}
+
+function checkPhone(inputtxt)
+{
+  var phoneno = /^\+?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+  if(inputtxt.match(phoneno)) {
+	  return true;
+  }
+      else
+        {
+        
+        return false;
+        }
+}
+
+function checkCellPhone(inputtxt)
+{
+  var phoneno = /^\+?([0-9]{4})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+   if(inputtxt.match(phoneno)) {
+	  return true;
+  }
+      else
+        {
+        
+        return false;
+        }
+}
+
+function checkNumber(inputtxt,num)
+{
+  var reg = /^\d+$/;
+ 
+  if(reg.test(inputtxt) && inputtxt.length == num ){
+	return true;
+  }
+  return false;
+}
+
+function checkString(inputtxt)
+{
+  var reg = /^\d+$/;
+	 
+  if(!reg.test(inputtxt) ){
+	return true;
+  }
+  return false;
+}
+
+</script>
+
+
+
+
+</head>
+
+<body>
+<form action=""  method="post" name="inputForm" class="tableBG" id="inputForm">
+  <table width="600" border="0" align="center">
+  <tr>
+  	<td align="center"><h1> Register </h1></td>
+  </tr>
+  <tr>
+  	<td>&nbsp;</td>
+  </tr>
+    <tr>
+      <td><table width="600" border="0" align="center">
+        <tr>
+          <td><span id="sprytextfield1">
+            <label for="FName"></label>
+            First Name
+            <input name="FName" type="text" class="border" id="FName"  />
+            <span class="textfieldRequiredMsg">: </span></span></td>
+          <td><span id="sprytextfield2">
+            <label for="LName"></label>
+            Last Name :
+            <input name="LName" type="text" class="border" id="LName" />
+          </span></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr >
+      <td><table width="600" border="0" align="center" >
+  <tr>
+    <td width="372"><fieldset>
+  <legend>Address :</legend>
+  
+  <table width="418" border="0" align="left">
+    <tr>
+      <td width="120" align="right">House number  : </td>
+      <td width="288"><span id="sprytextfield3">
+        <label for="HouseNum"></label><input name="HouseNum" type="text" class="border" id="HouseNum" />
+      </span></td>
+    </tr>
+    <tr>
+      <td >&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right">Street : </td>
+      <td><span id="sprytextfield4">
+        <label for="Street"></label>
+        <input name="Street" type="text" class="border" id="Street" />
+      </span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right">City : </td>
+      <td><span id="sprytextfield5">
+        <label for="City"></label>
+        <input name="City" type="text" class="border" id="City" />
+      </span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right">Province : </td>
+      <td><span id="sprytextfield6">
+        <label for="Province"></label>
+        <input name="Province" type="text" class="border" id="Province" />
+      </span></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td align="right">Zipcode : </td>
+      <td><span id="sprytextfield7">
+        <label for="Zipcode"></label>
+        <input name="Zipcode" type="text" class="border" id="Zipcode" placeholder="xxxxx"/>
+      </span>
+        </td>
+    </tr>
+  </table>
+ 
+    </fieldset></td>
+  </tr>
+</table>
+</td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><table width="600" border="0">
+        <tr>
+          <td><span id="sprytextfield8">
+          <label for="PhoneNumber"></label>
+Phone number :
+<input name="PhoneNumber" type="text" class="border" id="PhoneNumber" size="18" placeholder="+66x-xxx-xxxx"/>
+          </span></td>
+          <td><span id="sprytextfield9">
+            <label for="CellPhone"></label>
+            Cell phone number : 
+            <input name="CellPhone" type="text" class="border" id="CellPhone" size="18" placeholder="+66xx-xxx-xxxx"/>
+          </span></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><table width="600" border="0">
+        <tr>
+          <td width="140" align="right">Birthday : </td>
+          <td><input name="Birthday" type="date" class="border" id="Birthday" ></td>
+        </tr>
+      </table></td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+      <td><table width="600" border="0">
+      <tr>
+      		<td width="140" align="right">Citizenship number : 
+   		    </td>
+            <td ><span id="sprytextfield11">
+              <label for="CitizenNumber"></label><input name="CitizenNumber" type="text" class="border" id="CitizenNumber" placeholder=" 13 number"/>
+            </span></td>
+      </tr>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+     <tr>
+      <td><table width="600" border="0">
+      <tr>
+      		<td width="140" align="right">Zodiac Sign : </td>
+            <td><label for="ZodiacSign"></label>
+              <select name="ZodiacSign" class="border" id="ZodiacSign">
+              <option value="aries">Aries</option>
+        <option value="taurus">Taurus</option>
+        <option value="gemini">Gemini</option>
+        <option value="cancer">Cancer</option>
+        <option value="leo">Leo</option>
+        <option value="virgo">Virgo</option>
+        <option value="libra">Libra</option>
+        <option value="scorpio">Scorpio</option>
+        <option value="Sagit">Sagittarius</option>
+        <option value="Capric">Capricorn</option>
+        <option value="aquarius">Aquarius</option>
+        <option value="pisces">Pisces</option>
+            </select></td>
+      </tr>
+      </table>
+      </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td><table width="600" border="0">
+    	<tr>
+        	<td width="140" align="right">Zodiac Year : </td>
+            <td ><label for="ZodiacYear"></label>
+              <select name="ZodiacYear" class="border" id="ZodiacYear">
+              <option value="rat">Rat</option>
+        <option value="ox">Ox</option>
+        <option value="tiger">Tiger</option>
+        <option value="rab">Rabbit</option>
+        <option value="dragon">Dragon</option>
+        <option value="snake">Snake</option>
+        <option value="horse">Horse</option>
+        <option value="goat">Goat</option>
+        <option value="monkey">Monkey</option>
+        <option value="rooster">Rooster</option>
+        <option value="dog">Dog</option>
+        <option value="pig">Pig</option>
+            </select></td>
+        </tr>
+    </table>
+    </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td><table width="600" border="0">
+    	<tr>
+        	<td width="140" align="right">Birth Day of Week : </td>
+            <td ><label for="DayOfWeek"></label>
+              <select name="DayOfWeek" class="border" id="DayOfWeek">
+                <option value="mon">Monday</option>
+                <option value="tues">Tuesday</option>
+                <option value="wed">Wednesday</option>
+                <option value="thurs">Thursday</option>
+                <option value="fri">Friday</option>
+                <option value="sat">Saturday</option>
+                <option value="sun">Sunday</option>
+            </select></td>
+        </tr>
+    </table>
+    </td>
+    </tr>
+    <tr>
+      <td>&nbsp;</td>
+    </tr>
+    <tr>
+    <td><table width="600" border="0">
+    	<tr>
+        	<td align="center"><input name="Submit" type="button" class="buttonCSS" id="Submit"  value="Submit" onclick="validateForm()"/></td>
+            <td align="center"><input name="Save" type="button" class="buttonCSS" id="Save" onclick="saveCookie()" value="Save" /></td>
+            <td align="center"><input name="Cancel" type="reset" class="buttonCSS" id="Cancel" value="Cancel" /></td>
+        </tr>
+        
+    </table>
+    </td>
+    </tr>
+    <tr><td>&nbsp; </td></tr>
+   
+    
+  </table>
+</form>
+<script type="text/javascript">
+var sprytextfield1 = new Spry.Widget.ValidationTextField("sprytextfield1", "none");
+var sprytextfield2 = new Spry.Widget.ValidationTextField("sprytextfield2", "none");
+var sprytextfield3 = new Spry.Widget.ValidationTextField("sprytextfield3");
+var sprytextfield4 = new Spry.Widget.ValidationTextField("sprytextfield4");
+var sprytextfield5 = new Spry.Widget.ValidationTextField("sprytextfield5");
+var sprytextfield6 = new Spry.Widget.ValidationTextField("sprytextfield6");
+var sprytextfield7 = new Spry.Widget.ValidationTextField("sprytextfield7", "integer");
+var sprytextfield8 = new Spry.Widget.ValidationTextField("sprytextfield8", "none");
+var sprytextfield9 = new Spry.Widget.ValidationTextField("sprytextfield9");
+var sprytextfield11 = new Spry.Widget.ValidationTextField("sprytextfield11");
+</script>
+</body>
+</html>

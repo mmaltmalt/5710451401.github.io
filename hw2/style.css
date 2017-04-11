@@ -1,0 +1,394 @@
+/* css Zen Garden default style v1.02 */
+/* css released under Creative Commons License - http://creativecommons.org/licenses/by-nc-sa/1.0/  */
+
+/* This file based on 'Tranquille' by Dave Shea */
+/* You may use this file as a foundation for any new work, but you may find it easier to start from scratch. */
+/* Not all elements are defined in this file, so you'll most likely want to refer to the xhtml as well. */
+
+/* Your images should be linked as if the CSS file sits in the same folder as the images. ie. no paths. */
+
+
+/* basic elements */
+html {
+	    overflow-y: auto;
+    background: #faf3e6;
+    background-size: 22em;
+	}
+body { 
+	font: 112.5%/1.3 "ltc-bodoni-175",serif;
+  color: #3f3d3a;
+
+	
+	margin: 0; 
+	padding: 0;
+	}
+p { 
+	margin-top: 0; 
+	text-align: center;
+	max-width: 30rem;
+	}
+
+	.intro p, 
+	.preamble, 
+	.design-selection, 
+	.design-selection ul, 
+	.design-archives, 
+	.zen-resources ul, 
+	.participation p, 
+	.participation , 
+	.benefits , .benefits p , .explanation , .explanation p, .requirements , .requirements p {
+    max-width: 45rem;
+	margin : 0 auto 1em;
+	
+}
+.benefits p , .participation p, .requirements p, .intro p, .preamble p , .explanation p {
+  text-align:left;	
+  font-size:18px;
+}
+
+.preamble h3, 
+.benefits h3, 
+.participation h3, 
+.explanation h3, 
+.requirements h3{
+   font-family: "refrigerator-deluxe",sans-serif;
+  font-size: 2em;
+  letter-spacing: 0.05em;
+  padding: 0.5em 0;
+  margin: 0.35em auto 0.75em;
+  text-align:center;
+  background: 
+    url(img-lg-horiz-border.png) repeat-x top right,
+    url(img-lg-horiz-border.png) repeat-x bottom left;
+  background-size: 25em;
+  line-height: 1;
+}
+
+
+
+a:link {
+	font-weight: bold;
+	text-decoration: none;
+	color: #e5452c;
+	}
+a:visited {
+	font-weight: bold;
+	text-decoration: none;
+	color: #e5452c;
+	}
+a:hover, a:focus, a:active {
+	text-decoration: underline;
+	color: #333333;
+	}
+abbr {
+	/*border-bottom: none;*/
+	}
+
+
+/* specific divs */
+/*
+.page-wrapper { 
+	/*background: url(http://csszengarden.com/001/zen-bg.jpg) no-repeat top left;*/
+	/*
+	padding: 0 175px 0 110px;  
+	margin: 0; 
+	position: relative;
+	}
+	*/
+.page-wrapper {/*
+    margin:  0.7em auto 0.7em;
+  padding: 0.5em 0 0.55em;
+  line-height: 1;*/
+  background: 
+    url(img-lg-vert-border.png) repeat-y top left,
+    url(img-lg-vert-border.png) repeat-y right 100px;
+  background-size: 0.75em;
+}
+
+@font-face {
+    font-family: myFirstFont;
+    src: url(Track.ttf);
+}
+
+
+
+.intro {
+	
+	padding-top: 2em;
+background: 
+    url(img-lg-horiz-border.png) repeat-x top right;
+  background-size: 70em;
+
+}
+
+.intro p {
+  margin: 0 auto 1em;
+}
+
+header {
+	padding-top: 3em;
+	height: 300px;
+	text-align:center;
+	background:url(picjumbo.com_IMG_6643.jpg);
+	background-size:auto;
+	background-position:center;
+	background-repeat:no-repeat;
+	margin-left:20px;
+	margin-right:20px;
+}
+header h1{
+	padding-top: 1.7em;
+	font-family: myFirstFont;
+	color:#E6E8E8;
+	font-size:50px;
+	
+}
+header h2{
+	font-family: myFirstFont;
+	color:#E6E8E8;
+	font-size:25px;
+	
+}
+
+
+
+
+
+
+.summary {
+	clear: right; 
+	
+	}
+	
+.summary p {
+	/*font: italic 1.1em/2.2 georgia;*/ 
+	padding-top:1em;
+	text-align: center;
+	}
+
+.preamble {
+	clear: right; 
+	padding: 0px 10px 0 10px;
+	
+    margin : 0 auto 1em;
+
+	
+	}
+.supporting {	
+	padding-left: 10px; 
+	margin-bottom: 40px;
+	margin : 0 auto 1em;
+	}
+	
+
+
+
+/* -------SIDEBAR ASIDE------- */
+.design-selection h3 {
+  font-family: "refrigerator-deluxe",sans-serif;
+  font-size: 2em;
+  letter-spacing: 0.05em;
+  padding: 0.5em 0;
+  margin: 0.35em auto 0.75em;
+  text-align:center;
+  background: 
+    url(img-lg-horiz-border.png)repeat-x top right,
+    url(img-lg-horiz-border.png) repeat-x bottom left;
+  background-size: 15em;
+  line-height: 1;
+}
+
+.design-selection {
+  margin: 0 auto;
+}
+
+.design-selection ul {
+  list-style-type: none;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.design-selection li {
+  color: transparent;
+  margin-bottom: 0.28em;
+  clear: both;
+}
+
+.design-selection li a {
+  text-decoration: none;
+  color: #3f3d3a;
+}
+
+.sidebar a:hover, sidebar a:focus {
+  color: #e5452c;
+}
+
+.design-name {
+  font-style: italic;
+  background: #faf3e6;
+  padding-right: 0.25em;
+}
+
+.design-name:after {
+    float: left;
+    width: 0;
+    white-space: nowrap;
+    color: #3f3d3a;
+    content: "....................................................................................................................."
+}
+
+.designer-name {
+  float: right;
+  text-transform: uppercase;
+  background: #faf3e6;
+  font-style: italic;
+  padding-right: 0.25em;
+}
+
+h3.archives, h3.resources {
+  display: none;
+}
+
+.design-archives {
+  margin: 0.8em auto;
+  position: relative;
+}
+
+.design-archives ul {
+  list-style-type: none;
+  background: 
+    url('img-lg-horiz-border.png') repeat-x top right,
+    url('img-lg-horiz-border.png') repeat-x bottom left;
+  background-size: 36em;
+  padding: 1.25em 0;
+}
+
+.design-archives .viewall {
+  text-align: center;
+  text-transform: uppercase;
+  font-style: italic;
+  letter-spacing: 0.02em;
+  font-size: 1.125em;
+}
+
+.design-archives .previous a, .design-archives .next a {
+  position: absolute;
+  overflow: hidden;
+  width: 2em;
+  height: 1.25em;
+  color: #3f3d3a;
+  text-decoration: none;
+  white-space: nowrap;
+  text-indent: -9999px;
+  -webkit-transition: margin ease-out 0.1s;
+  -moz-transition: margin ease-out 0.1s;
+  -o-transition: margin ease-out 0.1s;
+  transition: margin ease-out 0.1s;
+}
+
+.design-archives .next a:hover, .design-archives .next a:focus {
+  margin-right: -4px;
+}
+
+.design-archives .previous a:hover, .design-archives .previous a:focus {
+  margin-left: -4px;
+}
+
+.viewall a, .zen-resources a {
+   color: #3f3d3a;
+   text-decoration: none;
+}
+
+.design-archives .next a {
+  right: 0;
+  background: url('img-sprite.png') no-repeat bottom right;
+  background-size: 20em;
+}
+
+.design-archives .previous a {
+  left: 0;
+  background: url('img-sprite.png') no-repeat bottom left;
+  background-size: 20em;
+}
+
+.sidebar .wrapper {
+  background: 
+    url('img-lg-horiz-border.png') repeat-x bottom left;
+  background-size: 40em;
+  margin: 0 2px -1px;
+}
+
+
+.zen-resources {
+  background:  url('img-pointer-guy-sm.png') no-repeat 28% 95%;
+  background-size: 5em;
+  overflow: hidden;
+}
+
+.zen-resources:after, .zen-resources ul:after {
+  width: 9em;
+  height: 9em;
+  content: '';
+  margin: 0 auto;
+  display: block;
+  z-index: -1;
+  position: relative;
+}
+
+.zen-resources:after {
+  margin-top: 9em;
+  background: #ffb14d url('img-halftone.png') repeat;
+   -webkit-transform: rotate(45deg) translateY(5.25em) translateX(2.75em);
+     -moz-transform: rotate(45deg) translateY(5.25em) translateX(2.75em);
+      -ms-transform: rotate(45deg) translateY(5.25em) translateX(2.75em);
+       -o-transform: rotate(45deg) translateY(5.25em) translateX(2.75em);
+          transform: rotate(45deg) translateY(5.25em) translateX(2.75em);
+}
+
+.zen-resources ul:after {
+  margin-top: 3.5em;
+  background: #bad1c2 url('img-halftone.png') repeat;
+   -webkit-transform: rotate(45deg) translateY(0.2em) translateX(3em);
+     -moz-transform: rotate(45deg) translateY(0.2em) translateX(3em);
+      -ms-transform: rotate(45deg) translateY(0.2em) translateX(3em);
+       -o-transform: rotate(45deg) translateY(0.2em) translateX(3em);
+          transform: rotate(45deg) translateY(0.2em) translateX(3em);
+  margin-bottom: -21.5em;
+}
+
+.zen-resources ul {
+  list-style-type: none;
+  margin: 0 auto;
+  font-family: "refrigerator-deluxe",sans-serif;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.zen-resources li {
+  display: block;
+  text-align: center;
+  line-height: 1.6;
+}
+
+footer { 
+	text-align: center; 
+	}
+	footer:after { 
+	    content: "";
+    height: 20px;
+    background: url(img-lg-horiz-border.png) repeat-x 0 -2px;
+    background-size: 70em;
+	}
+footer a:link, footer a:visited { 
+	margin-right: 20px; 
+	}
+
+
+.extra1 {
+	/*background: transparent url(http://csszengarden.com/001/cr2.gif) top left no-repeat; */
+	position: absolute; 
+	top: 40px; 
+	right: 0; 
+	width: 148px; 
+	height: 110px;
+	}
